@@ -1,0 +1,26 @@
+sudo: false
+
+services:
+  - docker
+
+language: go
+
+go:
+  - 1.7.4
+
+branches:
+  except:
+  - master
+
+before_install:
+  - docker build -t bacon -f resources/test/Dockerfile .
+
+script:
+  - docker run --rm bacon
+
+notifications:
+  on_success: always
+  email: false
+  slack:
+    secure: "n4K0oe7ZiVkPnt/CToOkUtMsc0nVfDncBo43tBm5daWbpYHvGxKfLeOhH2psgo/16/ALHW0sqvSckkx3OpQN7Op94wHUV9yHh5l0UbPD8qG4tCb2Rrj+gMS9JBKyXNDAHclkwZQ5eJca2dkrxwTFG2vwlbL+AA0A8ROaOcO+5hQ5MRkVonxPgEuHZC7YvcAKv0mHY4Qdge6ZJklFxF8h9JaTizFeVYCm4o4KWiOIOuAesvjeK0R/EJQ3Udas/EbrhpeJvuwnXnpwr7bm1z6dM3xb3p//vx5yjcLrEYfDfoVzg0z8k61lfuZTGFj6dxJ/vErTDHu11yjzFw2IK3vyXQzXe7GcZuYSwrc3AUOYDU5EMczGIv/X3Mh9zEKzL23ig1cP6TSLv9fgc+Yjv5ABUMNlfjkqTvj0hpchJCzjsafAkOwq9bTc3zmPgOmDPONmYqWZcqRS5S+zXqL+MA4BxIcyfVNncFom/US3Am2nRd1zHh/Fm6EJhqm/VPp2FqykGc7gDQJzGszQ6TPM+yut5FwMvnR2GFnleXCimwqCGkPUUSoFIdh16tviN7wCZZHdifnd9WiCNiYLDJAjH8qBl0pFjY1AgG/C/+ZZLfGDI4LHFpWRPYJjnQYCjKtpLu2SsHx0uBiZRgW5lPyg4OyhoBdxnCcnRYexgMef07cvi84="
+...
