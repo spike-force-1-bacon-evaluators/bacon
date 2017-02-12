@@ -7,6 +7,31 @@ import (
 	"testing"
 )
 
+// Test "/" endpoint
+func TestHandlerRoot(t *testing.T) {
+
+	// Prepare GET request to "/" endpoint
+	req, err := http.NewRequest("GET", "/", nil)
+	if err != nil {
+		t.Error("Failed to prepare request: ", err)
+	}
+
+	// record the response
+	rr := httptest.NewRecorder()
+
+	// Start test server prepared to receive request on 'ping' endpoint
+	handler := http.HandlerFunc(handlerPing)
+	handler.ServeHTTP(rr, req)
+
+	expectedResponseCode := 200
+	responseCode := rr.Code
+
+	// Compare response body
+	if expectedResponseCode != responseCode {
+		t.Errorf("For '/' endpoint: expecting response code %d. Received: %d", expectedResponseCode, responseCode)
+	}
+}
+
 func TestHandlerNotFound(t *testing.T) {
 
 	req, err := http.NewRequest("Get", "/foo", nil)
