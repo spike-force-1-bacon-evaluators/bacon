@@ -3,6 +3,18 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "9ZQIn/hBeozp8b7kbo4tI23zLpA=",
+			"path": "github.com/bacon/bacon/src/logger",
+			"revision": "13490b6d636f01e3bff9fa226f0b9e2aaf82ad0a",
+			"revisionTime": "2017-02-12T16:34:50Z"
+		},
+		{
+			"checksumSHA1": "0UJeI0ljUDZm4/yF1Hl2Da0a/nc=",
+			"path": "github.com/bacon/bacon/src/server",
+			"revision": "13490b6d636f01e3bff9fa226f0b9e2aaf82ad0a",
+			"revisionTime": "2017-02-12T16:34:50Z"
+		},
+		{
 			"checksumSHA1": "urMd7A9QPAJYY0GZJL9qBhlUmD8=",
 			"path": "github.com/gorilla/mux",
 			"revision": "757bef944d0f21880861c2dd9c871ca543023cba",
