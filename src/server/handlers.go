@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/bacon/bacon/src/logger"
 	"github.com/gorilla/mux"
 )
 
@@ -20,15 +21,18 @@ func handlers() *mux.Router {
 // For testing only
 // Page not found handler
 func handlerNotFound(w http.ResponseWriter, r *http.Request) {
+	logger.LogRequest(r.RemoteAddr, r.Method, r.URL.String())
 	w.WriteHeader(http.StatusNotFound)
 	w.Write([]byte("404 - Page Not Found"))
 }
 
 // Handler '/'
 func handlerRoot(w http.ResponseWriter, r *http.Request) {
+	logger.LogRequest(r.RemoteAddr, r.Method, r.URL.String())
 	indextmpl(w)
 }
 
 func handlerPing(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "PONG")
+	logger.LogRequest(r.RemoteAddr, r.Method, r.URL.String())
 }
