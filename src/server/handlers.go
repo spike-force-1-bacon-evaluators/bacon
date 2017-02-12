@@ -18,7 +18,6 @@ func handlers() *mux.Router {
 	return r
 }
 
-// For testing only
 // Page not found handler
 func handlerNotFound(w http.ResponseWriter, r *http.Request) {
 	logger.LogRequest(r.RemoteAddr, r.Method, r.URL.String())
@@ -32,7 +31,8 @@ func handlerRoot(w http.ResponseWriter, r *http.Request) {
 	indextmpl(w)
 }
 
+// Handler 'ping'. For testing only
 func handlerPing(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "PONG")
 	logger.LogRequest(r.RemoteAddr, r.Method, r.URL.String())
+	fmt.Fprint(w, "PONG")
 }
