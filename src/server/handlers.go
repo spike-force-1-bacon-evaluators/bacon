@@ -11,6 +11,8 @@ import (
 func handlers() *mux.Router {
 	r := mux.NewRouter()
 	r.NotFoundHandler = http.HandlerFunc(handlerNotFound)
+	r.PathPrefix("/public/").Handler(http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
+	r.HandleFunc("/", handlerRoot)
 	r.HandleFunc("/ping", handlerPing)
 	return r
 }
@@ -21,6 +23,12 @@ func handlerNotFound(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotFound)
 	w.Write([]byte("404 - Page Not Found"))
 }
+
+// Handler '/'
+func handlerRoot(w http.ResponseWriter, r *http.Request) {
+	indextmpl(w)
+}
+
 func handlerPing(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "PONG")
 }
