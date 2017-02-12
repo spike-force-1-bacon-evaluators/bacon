@@ -1,0 +1,49 @@
+{{ define "index" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{ .Meta.TabTitle }}</title>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <div style="width: 100%; height: 100px;">
+    <img src="/public/bacon.gif" alt="bacon gif" style="width: 120px; height: auto; float: left; margin-left: -20px;"/>
+    <h1 style="position: relative; top: 40px; left: 10px;">{{ .Meta.Title }}</h1>
+  </div>
+
+  <h2>{{ .Meta.Subtitle }}</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi risus velit, rhoncus id pulvinar at, lacinia quis mi. Ut sit amet scelerisque lacus. Sed imperdiet lacus at rutrum ornare. Duis ac fermentum enim, ac condimentum lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed hendrerit sodales tortor eget pretium.
+  </p>
+  <div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Restaurant</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range .Restaurants }}
+      <tr>
+        <td>{{ .Position }}</td>
+        <td>{{ .Name }}</td>
+        <td>
+          <span style="color: {{ .Indicator.Colour }}">{{ .Indicator.Direction }}</span> {{ .Variation }}
+        </td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  </div>
+</div>
+</body>
+</html>
+{{end}}
