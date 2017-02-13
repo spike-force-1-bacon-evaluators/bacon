@@ -4,7 +4,7 @@ import "testing"
 
 type expected struct {
 	indicator *Indicator
-	variation int
+	variation string
 }
 
 type testcases struct {
@@ -17,16 +17,16 @@ func TestNewIndicatorVariation(t *testing.T) {
 
 	var testCases = []*testcases{
 		{
-			&Restaurant{Variation: 1},
-			&expected{variation: 1},
+			&Restaurant{Variation: "1"},
+			&expected{variation: "1"},
 		},
 		{
-			&Restaurant{Variation: 0},
-			&expected{variation: 0},
+			&Restaurant{Variation: "0"},
+			&expected{variation: "0"},
 		},
 		{
-			&Restaurant{Variation: -1},
-			&expected{variation: 1},
+			&Restaurant{Variation: "-1"},
+			&expected{variation: "1"},
 		},
 	}
 
@@ -34,7 +34,7 @@ func TestNewIndicatorVariation(t *testing.T) {
 		_ = test.input.newIndicator()
 
 		if test.input.Variation != test.expected.variation {
-			t.Errorf("For variation: %d. Expected: %d. Received: %d",
+			t.Errorf("For variation: %s. Expected: %s. Received: %s",
 				test.input.Variation, test.expected.variation, test.input.Variation)
 		}
 	}
@@ -45,15 +45,15 @@ func TestNewIndicatorDirection(t *testing.T) {
 
 	var testCases = []*testcases{
 		{
-			&Restaurant{Variation: 1},
+			&Restaurant{Variation: "1"},
 			&expected{indicator: &Indicator{Direction: "⇧"}},
 		},
 		{
-			&Restaurant{Variation: 0},
+			&Restaurant{Variation: "0"},
 			&expected{indicator: &Indicator{Direction: "▭"}},
 		},
 		{
-			&Restaurant{Variation: -1},
+			&Restaurant{Variation: "-1"},
 			&expected{indicator: &Indicator{Direction: "⇩"}},
 		},
 	}
@@ -62,10 +62,9 @@ func TestNewIndicatorDirection(t *testing.T) {
 		observed := test.input.newIndicator()
 
 		if observed.Direction != test.expected.indicator.Direction {
-			t.Errorf("For variation: %d. Expected: %s. Received: %s",
+			t.Errorf("For variation: %s. Expected: %s. Received: %s",
 				test.input.Variation, test.expected.indicator.Direction, observed.Direction)
 		}
-
 	}
 }
 
@@ -74,15 +73,15 @@ func TestNewIndicatorColour(t *testing.T) {
 
 	var testCases = []*testcases{
 		{
-			&Restaurant{Variation: 1},
+			&Restaurant{Variation: "1"},
 			&expected{indicator: &Indicator{Colour: "green"}},
 		},
 		{
-			&Restaurant{Variation: 0},
+			&Restaurant{Variation: "0"},
 			&expected{indicator: &Indicator{}},
 		},
 		{
-			&Restaurant{Variation: -1},
+			&Restaurant{Variation: "-1"},
 			&expected{indicator: &Indicator{Colour: "red"}},
 		},
 	}

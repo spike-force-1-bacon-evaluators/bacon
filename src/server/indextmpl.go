@@ -23,7 +23,7 @@ type Indicator struct {
 type Restaurant struct {
 	Position  int
 	Name      string
-	Variation int
+	Variation string
 	Indicator *Indicator
 }
 
@@ -32,6 +32,7 @@ type Index struct {
 	Meta        *Meta
 	Restaurants []*Restaurant
 }
+
 
 // Create and execute index template
 // TODO: change this function accordingly to values returned from Neo4j,
