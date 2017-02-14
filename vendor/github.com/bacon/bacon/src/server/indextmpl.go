@@ -39,8 +39,6 @@ type Index struct {
 var restaurantList []*neo4bacon.Restaurant
 
 // Create and execute index template
-// TODO: change this function accordingly to values returned from Neo4j,
-// remove mock data, and write test
 func indextmpl(w http.ResponseWriter) {
 
 	restaurantList = neo4bacon.Run()
@@ -63,7 +61,7 @@ func indextmpl(w http.ResponseWriter) {
 		Meta: &Meta{
 			Title:    "Bacon Evaluators",
 			Subtitle: "A Bodacious Adviser for Cuisine Over N-joyment",
-			TabTitle: "Bacon",
+			TabTitle: "B.A.C.O.N. Evaluators",
 		},
 		Restaurants: restaurants,
 	}

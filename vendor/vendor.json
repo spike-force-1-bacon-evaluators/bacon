@@ -11,14 +11,14 @@
 		{
 			"checksumSHA1": "G+isV8I6NhqJ+UpU6T91ma64sR0=",
 			"path": "github.com/bacon/bacon/src/neo4bacon",
-			"revision": "b040205c9c151cc907631843970d165c93296c71",
-			"revisionTime": "2017-02-14T15:55:15Z"
+			"revision": "907035281945c9a34d53431aa49eac89b852222a",
+			"revisionTime": "2017-02-14T17:40:44Z"
 		},
 		{
-			"checksumSHA1": "xTtNkVqLQ6xCm5YhkVqpwRQOLDE=",
+			"checksumSHA1": "yrXCIDnGubUgEsR+X3BMCFEQwLw=",
 			"path": "github.com/bacon/bacon/src/server",
-			"revision": "b040205c9c151cc907631843970d165c93296c71",
-			"revisionTime": "2017-02-14T15:55:15Z"
+			"revision": "907035281945c9a34d53431aa49eac89b852222a",
+			"revisionTime": "2017-02-14T17:40:44Z"
 		},
 		{
 			"checksumSHA1": "hveFTNQ9YEyYRs6SWuXM+XU9qRI=",
