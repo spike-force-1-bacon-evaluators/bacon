@@ -1,3 +1,4 @@
+// Package neo4bacon implement API for communication with Neo4j
 package neo4bacon
 
 import (
@@ -8,7 +9,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-// Auth ...
+// Auth wraps values for Neo4j authentication
 type Auth struct {
 	user     string
 	password string
@@ -18,7 +19,7 @@ type Auth struct {
 }
 
 const (
-	connectErrMsg    = "Error connectiong to Neo4J"
+	connectErrMsg    = "Error connecting to Neo4J"
 	loadConfigErrMsg = "Error loading config file"
 )
 
@@ -47,16 +48,15 @@ func (a *Auth) getURL() {
 		a.user, a.password, a.baseURL, a.port)
 }
 
+// getConnection returns a Neo4j connection
+// The connection must be closed by the client after use
 func (a *Auth) getConnection() (bolt.Conn, error) {
-
 	// Ask for a new Neo4J Bolt Driver
 	driver := bolt.NewDriver()
-
 	// Open new connection with Neo4j
 	conn, err := driver.OpenNeo(a.URL)
 	if err != nil {
 		return nil, fmt.Errorf("%s: %s", connectErrMsg, err)
 	}
-
 	return conn, nil
 }
