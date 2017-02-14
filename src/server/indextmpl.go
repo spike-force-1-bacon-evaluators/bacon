@@ -61,7 +61,7 @@ func indextmpl(w http.ResponseWriter) {
 		Meta: &Meta{
 			Title:    "Bacon Evaluators",
 			Subtitle: "A Bodacious Adviser for Cuisine Over N-joyment",
-			TabTitle: "Bacon",
+			TabTitle: "B.A.C.O.N. Evaluators",
 		},
 		Restaurants: restaurants,
 	}
