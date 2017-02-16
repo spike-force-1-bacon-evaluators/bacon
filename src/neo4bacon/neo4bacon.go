@@ -30,12 +30,15 @@ type neo4j struct {
 	newlistquery  string
 	oldlistresult [][]interface{}
 	newlistresult [][]interface{}
-	result        []*Restaurant
+	georesults    [][]interface{}
+
+	result []*Restaurant
 }
 
 const (
 	queryOld = "MATCH (r:Restaurant)-->(b:Bacon) where b.last_points is not null return r.id as Rid, r.name as Restaurant ORDER BY b.last_points DESC"
 	queryNew = "MATCH (r:Restaurant)-->(b:Bacon) where b.points is not null return r.id as Rid, r.name as Restaurant ORDER BY b.points DESC"
+	queryGeo = "MATCH (r:Restaurant)-->(b:Bacon) return r.name as Restaurant, b.points as Score, r.lng as Lng, r.lat as Lat ORDER BY Score DESC LIMIT 10"
 )
 
 // Run Neo4j integration to get a new list of restaurants
@@ -129,4 +132,35 @@ func (n *neo4j) mapResult() {
 		}
 	}
 	n.result = restaurants
+}
+
+func GetGeoLocation() ([][]interface{}, error) {
+
+	// Load credentials for Neo4j connection
+	loadConfig()
+
+	// Initialize Auth struct and get URL for Neo4j connection
+	a := newAuth()
+
+	// Get URL to connect to Neo4j
+	a.getURL()
+
+	n := &neo4j{
+		url: a.URL,
+	}
+
+	// Ask for connection
+	conn, err := a.getConnection()
+	if err != nil {
+		log.Fatal(err)
+	}
+	n.conn = conn
+
+	data, err := n.queryNeo4j(queryGeo)
+	if err != nil {
+		return nil, err
+	}
+
+	n.georesults = data
+	return data, nil
 }
