@@ -8,10 +8,6 @@ language: go
 go:
   - 1.7.4
 
-branches:
-  except:
-  - master
-
 before_install:
   - docker build -t bacon -f resources/test/Dockerfile .
 
