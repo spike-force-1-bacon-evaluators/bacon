@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/bacon/bacon/src/neo4bacon"
+	"github.com/spike-force-1-bacon-evaluators/bacon/src/neo4bacon"
 )
 
 type GeoRest struct {
